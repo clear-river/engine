@@ -1,0 +1,101 @@
+import ReactFlow, { useNodes, useEdges } from 'reactflow';
+
+const Graph_Func = () =>{
+  const nodes = [
+    { id: '1', position: { x: 0, y: 0 }, data: { label: '节点1' } },
+    { id: '2', position: { x: 200, y: 0 }, data: { label: '节点2' } },
+    { id: '3', position: { x: 400, y: 0 }, data: { label: '节点3' } },
+  ];
+
+  const edges = [
+    { id: 'e1-2', source: '1', target: '2', data: { label: '连接1' } },
+    { id: 'e2-3', source: '2', target: '3', data: { label: '连接2' } },
+  ];
+
+  const onConnect = (params) => {
+    console.log('连接', params);
+  };
+
+  const onNodeClick = (event, node) => {
+    console.log('点击节点', node);
+  };
+
+  const onEdgeClick = (event, edge) => {
+    console.log('点击连接', edge);
+  };
+
+  const onNodeDrag = (event, node) => {
+    console.log('拖动节点', node);
+  };
+
+  const onEdgeDrag = (event, edge) => {
+    console.log('拖动连接', edge);
+  };
+
+  const onNodeDoubleClick = (event, node) => {
+    console.log('双击节点', node);
+  };
+
+  const onEdgeDoubleClick = (event, edge) => {
+    console.log('双击连接', edge);
+  };
+
+  const onNodeContextMenu = (event, node) => {
+    console.log('右键菜单节点', node);
+  };
+
+  const onEdgeContextMenu = (event, edge) => {
+    console.log('右键菜单连接', edge);
+  };
+
+  const onNodeDragStop = (event, node) => {
+    console.log('拖动节点结束', node);
+  };
+
+  const onEdgeDragStop = (event, edge) => {
+    console.log('拖动连接结束', edge);
+  };
+
+  const onNodesChange = (newNodes) => {
+    console.log('节点变化', newNodes);
+  };
+
+  const onEdgesChange = (newEdges) => {
+    console.log('连接变化', newEdges);
+  };
+
+  const onZoom = (event, zoom) => {
+    console.log('缩放', zoom);
+  };
+
+  const onPan = (event, dx, dy) => {
+    console.log('平移', { dx, dy });
+  };
+
+  const onInit = (reactFlowInstance) => {
+    console.log('实例', reactFlowInstance);
+  };
+
+  return (
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onConnect={onConnect}
+      onNodeClick={onNodeClick}
+      onEdgeClick={onEdgeClick}
+      onNodeDrag={onNodeDrag}
+      onEdgeDrag={onEdgeDrag}
+      onNodeDoubleClick={onNodeDoubleClick}
+      onEdgeDoubleClick={onEdgeDoubleClick}
+      onNodeContextMenu={onNodeContextMenu}
+      onEdgeContextMenu={onEdgeContextMenu}
+      onNodeDragStop={onNodeDragStop}
+      onEdgeDragStop={onEdgeDragStop}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      onZoom={onZoom}
+      onPan={onPan}
+      onInit={onInit}
+    />
+  );
+}

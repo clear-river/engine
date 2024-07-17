@@ -1,0 +1,29 @@
+import React, { useState } from 'react';
+import { ReactFlow,ReactFlowProvider, useReactFlow } from 'reactflow';
+
+const MyFlowComponent2 = () => {
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const reactFlowProps = useReactFlow();
+
+  const onConnect = (connection) => {
+    console.log('connection', connection);
+  };
+
+  return (
+    <div>
+      <button onClick={() => reactFlowInstance.fitView()}>Fit View</button>
+      <ReactFlowProvider {...reactFlowProps}>
+        <ReactFlow
+          onConnect={onConnect}
+          onInit={setReactFlowInstance}
+        >
+          <ReactFlow.Node id="1" position={{ x: 100, y: 100 }} />
+          <ReactFlow.Node id="2" position={{ x: 200, y: 200 }} />
+          <ReactFlow.Edge id="e1-2" source="1" target="2" />
+        </ReactFlow>
+      </ReactFlowProvider>
+    </div>
+  );
+};
+
+export default MyFlowComponent2;
